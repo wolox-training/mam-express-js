@@ -1,5 +1,5 @@
 const axios = require('axios');
-const { getRandomJoke } = require('../../app/services/weet');
+const { getRandomJoke } = require('../../app/services/weets');
 
 jest.mock('axios');
 
