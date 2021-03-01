@@ -56,6 +56,27 @@ exports.signupSchema = {
   }
 };
 
+exports.paginationSchema = {
+  page: {
+    in: ['query'],
+    isInt: {
+      options: { min: 1 }
+    },
+    toInt: true,
+    optional: { options: { nullable: true } },
+    errorMessage: 'page and limit have to be integer'
+  },
+  limit: {
+    in: ['query'],
+    isInt: {
+      options: { min: 1 }
+    },
+    toInt: true,
+    optional: { options: { nullable: true } },
+    errorMessage: 'page and limit have to be integer'
+  }
+};
+
 const throwValidationError = (req, res, next) => {
   const validationErrors = validationResult(req);
   if (validationErrors.isEmpty()) {

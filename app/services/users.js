@@ -24,4 +24,15 @@ const create = async user => {
   await userModel.create(userToStore);
 };
 
-module.exports = { create, findByEmail };
+const listUsers = async (page, limit) => {
+  const offset = (page - 1) * limit;
+  try {
+    const foundUsers = await userModel.findAll({ offset, limit });
+    return foundUsers;
+  } catch (error) {
+    logger.error('Error trying to get all users', error.message);
+    throw errors.databaseError(error.message);
+  }
+};
+
+module.exports = { create, findByEmail, listUsers };

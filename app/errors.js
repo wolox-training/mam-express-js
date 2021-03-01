@@ -23,3 +23,6 @@ exports.userNotFoundError = message => internalError(message, exports.USER_NOT_F
 
 exports.MATCH_CREDENTIALS_ERROR = 'match_credentials_error';
 exports.matchCredentialsError = message => internalError(message, exports.MATCH_CREDENTIALS_ERROR);
+
+exports.AUTHORIZATION_ERROR = 'authorization_error';
+exports.authorizationError = message => internalError(message, exports.AUTHORIZATION_ERROR);

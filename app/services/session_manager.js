@@ -1,5 +1,6 @@
 const bcrypt = require('bcryptjs');
 const jwt = require('jwt-simple');
+const moment = require('moment');
 const usersService = require('../services/users');
 const logger = require('../logger');
 const errors = require('../errors');
@@ -20,15 +21,16 @@ exports.checkCredentials = async (email, password) => {
 };
 
 exports.generateToken = user => {
+  const expiration = moment().add(3600, 'days');
   const token = jwt.encode(
     {
       id: user.id,
-      exp: '2h'
+      exp: expiration
     },
     NODE_API_SESSION_SECRET
   );
   return {
     token,
-    exp: '2h'
+    exp: expiration
   };
 };
