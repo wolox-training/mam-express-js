@@ -5,7 +5,12 @@ const DEFAULT_STATUS_CODE = 500;
 
 const statusCodes = {
   [errors.DATABASE_ERROR]: 503,
-  [errors.DEFAULT_ERROR]: 500
+  [errors.DEFAULT_ERROR]: 500,
+  [errors.UNIQUE_EMAIL_ERROR]: 400,
+  [errors.INVALID_PARAMS_ERROR]: 400,
+  [errors.USER_NOT_FOUND_ERROR]: 404,
+  [errors.MATCH_CREDENTIALS_ERROR]: 400,
+  [errors.AUTHORIZATION_ERROR]: 401
 };
 
 exports.handle = (error, req, res, next) => {
